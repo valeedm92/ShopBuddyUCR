@@ -10,8 +10,6 @@
 
 // HI DARRIN, I reset something...
 
-// HI kenneth
-
 import UIKit
 
 class AboutMeVC: UIViewController {
