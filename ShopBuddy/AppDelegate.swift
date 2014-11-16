@@ -2,8 +2,8 @@
 //  AppDelegate.swift
 //  ShopBuddy
 //
-//  Created by Darrin Lin on 11/15/14.
-//  Copyright (c) 2014 Fancy. All rights reserved.
+//  Created by Kenneth Hsu on 10/20/14.
+//  Copyright (c) 2014 Kenneth Hsu. All rights reserved.
 //
 
 import UIKit
@@ -12,7 +12,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
