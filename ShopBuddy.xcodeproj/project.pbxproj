@@ -18,7 +18,6 @@
 		3EA3A4621A187A3A002C0CE7 /* costco.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3EA3A4491A187A3A002C0CE7 /* costco.jpg */; };
 		3EA3A4631A187A3A002C0CE7 /* Details.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A44A1A187A3A002C0CE7 /* Details.swift */; };
 		3EA3A4641A187A3A002C0CE7 /* FeaturedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A44B1A187A3A002C0CE7 /* FeaturedVC.swift */; };
-		3EA3A4651A187A3A002C0CE7 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A44C1A187A3A002C0CE7 /* File.swift */; };
 		3EA3A4661A187A3A002C0CE7 /* food4less.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EA3A44D1A187A3A002C0CE7 /* food4less.png */; };
 		3EA3A4671A187A3A002C0CE7 /* genericGas.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EA3A44E1A187A3A002C0CE7 /* genericGas.png */; };
 		3EA3A4681A187A3A002C0CE7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A44F1A187A3A002C0CE7 /* LoginVC.swift */; };
@@ -62,7 +61,6 @@
 		3EA3A4491A187A3A002C0CE7 /* costco.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = costco.jpg; sourceTree = "<group>"; };
 		3EA3A44A1A187A3A002C0CE7 /* Details.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Details.swift; sourceTree = "<group>"; };
 		3EA3A44B1A187A3A002C0CE7 /* FeaturedVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeaturedVC.swift; sourceTree = "<group>"; };
-		3EA3A44C1A187A3A002C0CE7 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		3EA3A44D1A187A3A002C0CE7 /* food4less.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food4less.png; sourceTree = "<group>"; };
 		3EA3A44E1A187A3A002C0CE7 /* genericGas.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = genericGas.png; sourceTree = "<group>"; };
 		3EA3A44F1A187A3A002C0CE7 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
@@ -136,7 +134,6 @@
 				3EA3A4461A187A3A002C0CE7 /* Business.swift */,
 				3EA3A44A1A187A3A002C0CE7 /* Details.swift */,
 				3EA3A44B1A187A3A002C0CE7 /* FeaturedVC.swift */,
-				3EA3A44C1A187A3A002C0CE7 /* File.swift */,
 				3EA3A44F1A187A3A002C0CE7 /* LoginVC.swift */,
 				3EA3A4501A187A3A002C0CE7 /* MainBoardVC.swift */,
 				3EA3A4521A187A3A002C0CE7 /* ResultCell.swift */,
@@ -304,7 +301,6 @@
 				3EA3A46F1A187A3A002C0CE7 /* SignupVC.swift in Sources */,
 				3EA3A45F1A187A3A002C0CE7 /* Business.swift in Sources */,
 				3EA3A46D1A187A3A002C0CE7 /* SearchVC.swift in Sources */,
-				3EA3A4651A187A3A002C0CE7 /* File.swift in Sources */,
 				3EA3A4711A187A3A002C0CE7 /* WelcomeVC.swift in Sources */,
 				3EA3A4691A187A3A002C0CE7 /* MainBoardVC.swift in Sources */,
 				3EA3A4681A187A3A002C0CE7 /* LoginVC.swift in Sources */,

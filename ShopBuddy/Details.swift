@@ -30,9 +30,11 @@ class Details: UIViewController {
     }
     
     override func viewDidLoad() {
-        self.setLabels()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.setLabels()
+        self.navigationController?.navigationBarHidden = false;
     }
     
     func foo (x: Int) -> NSObject {
@@ -91,8 +93,9 @@ class Details: UIViewController {
             NSLog("Response ==> %@", responseData);
         }
     }
-
     
+    
+
     /*
     // MARK: - Navigation
 
