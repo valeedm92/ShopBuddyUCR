@@ -157,6 +157,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         // Assign location variable
         locationSearchBarText = String(placemark.locality as String + ", " + placemark.postalCode as String)
         queryLocationFromPHP(manager)
+        resultsTable.reloadData()
         self.viewDidLoad()
     }
     
@@ -203,7 +204,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
                 var bDist: String = responseData[i].objectForKey("dist") as String
                 
                 var tmpBusiness = Business(logo: bLogo, catergory: bCat, id: bID, name: bName, phoneNum: bPhone, address: bAddress, price87: bPrice87, price89: bPrice89, price91: bPrice91, priceD: bPriceD, timeLastUdpated: bTimeLastUpdated, userLastUpdated: bUserLastUpdated, distance: bDist)
-                
+                print(i); print(": ")
                 println("appending to arrayOfResults")
                 arrayOfResults.append(tmpBusiness)
             }
