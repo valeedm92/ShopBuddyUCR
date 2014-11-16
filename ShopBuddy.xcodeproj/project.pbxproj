@@ -24,7 +24,6 @@
 		3EA3A4691A187A3A002C0CE7 /* MainBoardVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A4501A187A3A002C0CE7 /* MainBoardVC.swift */; };
 		3EA3A46A1A187A3A002C0CE7 /* mobil.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3EA3A4511A187A3A002C0CE7 /* mobil.jpg */; };
 		3EA3A46B1A187A3A002C0CE7 /* ResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A4521A187A3A002C0CE7 /* ResultCell.swift */; };
-		3EA3A46C1A187A3A002C0CE7 /* ResultDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A4531A187A3A002C0CE7 /* ResultDetailVC.swift */; };
 		3EA3A46D1A187A3A002C0CE7 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A4541A187A3A002C0CE7 /* SearchVC.swift */; };
 		3EA3A46E1A187A3A002C0CE7 /* shell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3EA3A4551A187A3A002C0CE7 /* shell.jpg */; };
 		3EA3A46F1A187A3A002C0CE7 /* SignupVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA3A4561A187A3A002C0CE7 /* SignupVC.swift */; };
@@ -67,7 +66,6 @@
 		3EA3A4501A187A3A002C0CE7 /* MainBoardVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainBoardVC.swift; sourceTree = "<group>"; };
 		3EA3A4511A187A3A002C0CE7 /* mobil.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mobil.jpg; sourceTree = "<group>"; };
 		3EA3A4521A187A3A002C0CE7 /* ResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultCell.swift; sourceTree = "<group>"; };
-		3EA3A4531A187A3A002C0CE7 /* ResultDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultDetailVC.swift; sourceTree = "<group>"; };
 		3EA3A4541A187A3A002C0CE7 /* SearchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		3EA3A4551A187A3A002C0CE7 /* shell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = shell.jpg; sourceTree = "<group>"; };
 		3EA3A4561A187A3A002C0CE7 /* SignupVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupVC.swift; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				3EA3A44F1A187A3A002C0CE7 /* LoginVC.swift */,
 				3EA3A4501A187A3A002C0CE7 /* MainBoardVC.swift */,
 				3EA3A4521A187A3A002C0CE7 /* ResultCell.swift */,
-				3EA3A4531A187A3A002C0CE7 /* ResultDetailVC.swift */,
 				3EA3A4541A187A3A002C0CE7 /* SearchVC.swift */,
 				3EA3A4561A187A3A002C0CE7 /* SignupVC.swift */,
 				3EA3A4581A187A3A002C0CE7 /* WelcomeVC.swift */,
@@ -304,7 +301,6 @@
 				3EA3A4711A187A3A002C0CE7 /* WelcomeVC.swift in Sources */,
 				3EA3A4691A187A3A002C0CE7 /* MainBoardVC.swift in Sources */,
 				3EA3A4681A187A3A002C0CE7 /* LoginVC.swift in Sources */,
-				3EA3A46C1A187A3A002C0CE7 /* ResultDetailVC.swift in Sources */,
 				3EA3A45C1A187A3A002C0CE7 /* AboutMeVC.swift in Sources */,
 				3EA3A46B1A187A3A002C0CE7 /* ResultCell.swift in Sources */,
 				3EA3A4631A187A3A002C0CE7 /* Details.swift in Sources */,
