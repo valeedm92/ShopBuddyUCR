@@ -16,6 +16,7 @@ class SignupVC: UIViewController {
     @IBOutlet var newUsername: UITextField!
     @IBOutlet var newPassword: UITextField!
     @IBOutlet var newPasswordCheck: UITextField!
+    
     @IBAction func backToLogin(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }

@@ -31,10 +31,10 @@ class ResultCell: UITableViewCell {
     func setCell (logo: String, price: String, time: String, user: String, distance: String) {
         
         self.lastUpdatedString.text = "Last Updated by:"
-        self.price.text = price
+        self.price.text = "$" + price
         self.time.text = time
         self.user.text = user
-        self.distance.text = distance
+        self.distance.text = "~" + distance + " mi."
         
         self.logo.image = UIImage(named: logo)
     }

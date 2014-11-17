@@ -59,6 +59,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
 
         self.resultsTable.delegate = self
         self.resultsTable.dataSource = self
+        resultsTable.reloadData()
         // self.setUpBusiness()
     }
     
@@ -275,6 +276,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
             currentBusiness = arrayOfResults[i.row]
             var detailViewReference: Details = segue.destinationViewController as Details
             detailViewReference.setCurrentBusiness(currentBusiness)
+            detailViewReference.setPreviousVC(self)
             // detailViewReference.viewDidLoad()
         }
     }

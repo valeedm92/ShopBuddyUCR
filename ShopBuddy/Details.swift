@@ -29,12 +29,18 @@ class Details: UIViewController {
         sendPricesToPHP()
     }
     
+    @IBAction func doneTriggered(sender: AnyObject) {
+        println("going back to results")
+        self.dismissViewControllerAnimated(true, completion: nil)
+        previousVC.viewDidLoad()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         self.setLabels()
-        self.navigationController?.navigationBarHidden = false;
+//        self.navigationController?.navigationBarHidden = false;
     }
     
     func foo (x: Int) -> NSObject {
@@ -94,6 +100,10 @@ class Details: UIViewController {
         }
     }
     
+    var previousVC: SearchVC = SearchVC()
+    func setPreviousVC(prevVC: SearchVC) {
+        previousVC = prevVC
+    }
     
 
     /*
