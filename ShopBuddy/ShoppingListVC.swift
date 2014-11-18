@@ -1,5 +1,5 @@
 //
-//  ShoppingList.swift
+//  ShoppingListVC.swift
 //  ShopBuddy
 //
 //  Created by Kenneth Hsu on 11/17/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShoppingList: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var shoppingListTable: UITableView!
     
