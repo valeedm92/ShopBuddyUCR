@@ -33,9 +33,11 @@ class ProductsCatalogVC: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: ProductCell = tableView.dequeueReusableCellWithIdentifier("catalogItem") as ProductCell
-        
         let currentProduct = arrayOfProducts[indexPath.row]
         cell.setCell(currentProduct.category, productName: currentProduct.productName, isProduct:currentProduct.isProduct)
+        if !currentProduct.isProduct {
+            cell.backgroundColor = UIColor.grayColor()
+        }
         return cell
     }
     
