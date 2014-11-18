@@ -10,14 +10,14 @@ import UIKit
 
 class ShoppingList: UIViewController {
     
-    @IBOutlet var shoppingList: UITableView!
+//    @IBOutlet var shoppingList: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.shoppingList.delegate = self
-        self.shoppingList.dataSource = self
+//        self.shoppingList.delegate = self
+//        self.shoppingList.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
