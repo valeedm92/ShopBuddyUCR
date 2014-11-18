@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>79DFBFA9-1EB7-423C-9821-2370C85FC0DA</string>
+	<string>D8C56491-C44E-42FB-BCB7-921554544C47</string>
 	<key>IDESourceControlProjectName</key>
 	<string>ShopBuddy</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>98868CE06B19EEB21E06EEF3B6B3BBFB39E922F9</key>
-		<string>https://github.com/kennethshsu/ShopBuddyUCR</string>
+		<string>https://github.com/fancymans/ShopBuddyUCR.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>ShopBuddy.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/kennethshsu/ShopBuddyUCR</string>
+	<string>https://github.com/fancymans/ShopBuddyUCR.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
@@ -34,7 +34,7 @@
 			<key>IDESourceControlWCCIdentifierKey</key>
 			<string>98868CE06B19EEB21E06EEF3B6B3BBFB39E922F9</string>
 			<key>IDESourceControlWCCName</key>
-			<string>ShopBuddyUCR</string>
+			<string>ShopBuddy</string>
 		</dict>
 	</array>
 </dict>

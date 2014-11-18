@@ -12,6 +12,7 @@ class ProductsCatalogVC: UIViewController, UITableViewDataSource, UITableViewDel
     
     @IBOutlet var catalogTable: UITableView!
     
+    var previousVC: ShoppingListVC = ShoppingListVC()
     var arrayOfProducts = [Product] ()
 
     override func viewDidLoad() {
@@ -53,10 +54,14 @@ class ProductsCatalogVC: UIViewController, UITableViewDataSource, UITableViewDel
         
         println("You selected custom cell #: " + String(format: "%i", indexPath.row))
         if arrayOfProducts[indexPath.row].isProduct {
-
+            previousVC.queryText = arrayOfProducts[indexPath.row].productName
+            println(previousVC.queryText)
             self.dismissViewControllerAnimated(true, completion: nil)
         }
-
+    }
+    
+    func setPrevVC (prevVC: ShoppingListVC) {
+        previousVC = prevVC
     }
 
     func loadCatalog () {

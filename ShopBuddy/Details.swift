@@ -42,11 +42,6 @@ class Details: UIViewController {
         self.setLabels()
 //        self.navigationController?.navigationBarHidden = false;
     }
-    
-    func foo (x: Int) -> NSObject {
-        var y: Int = x
-        return NSObject()
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

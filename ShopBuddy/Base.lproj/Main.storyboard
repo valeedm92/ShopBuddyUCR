@@ -615,7 +615,7 @@
                                     <navigationItem title="Shopping List" id="mUL-BZ-I7O">
                                         <barButtonItem key="rightBarButtonItem" title="+" id="mLv-kZ-RS4">
                                             <connections>
-                                                <segue destination="8Wp-W5-tYk" kind="show" id="Kbq-n6-emF"/>
+                                                <segue destination="8Wp-W5-tYk" kind="show" identifier="goto_productsCatalog" id="Kbq-n6-emF"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>

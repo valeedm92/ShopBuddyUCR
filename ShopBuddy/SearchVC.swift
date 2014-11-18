@@ -94,9 +94,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected custom cell #: " + String(format: "%i", indexPath.row))
         currentBusiness = arrayOfResults[indexPath.row]
-        currentIndex = indexPath.row
     }
-    
     // =======================================================================================================
     
     
