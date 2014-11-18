@@ -8,16 +8,18 @@
 
 import UIKit
 
-class ShoppingList: UIViewController {
+class ShoppingList: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-//    @IBOutlet var shoppingList: UITableView!
+    @IBOutlet var shoppingListTable: UITableView!
+    
+    var arrayOfShoppingItems: [String] = [String] ()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-//        self.shoppingList.delegate = self
-//        self.shoppingList.dataSource = self
+        self.shoppingListTable.delegate = self
+        self.shoppingListTable.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,7 +27,20 @@ class ShoppingList: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("shoppingItem") as UITableViewCell
+        let currentItem = arrayOfShoppingItems[indexPath.row]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return arrayOfShoppingItems.count
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        println("You selected custom cell #: " + String(format: "%i", indexPath.row))
+    }
     
     
 
