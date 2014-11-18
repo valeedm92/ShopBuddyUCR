@@ -557,7 +557,7 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Shopping List" id="mUL-BZ-I7O">
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="mLv-kZ-RS4">
+                                        <barButtonItem key="rightBarButtonItem" title="+" id="mLv-kZ-RS4">
                                             <connections>
                                                 <action selector="addItemTriggered:" destination="cLn-16-qL7" id="HEA-IF-oph"/>
                                                 <segue destination="8Wp-W5-tYk" kind="presentation" modalTransitionStyle="crossDissolve" id="wyk-Ev-tkn"/>
@@ -569,6 +569,15 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3xg-98-USB">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="WJg-ZR-7QY">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="shoppingItem" tableViewCell="WJg-ZR-7QY" id="eOb-kH-fRH">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -578,7 +587,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="shoppingList" destination="3xg-98-USB" id="dnq-5N-Yhu"/>
+                        <outlet property="shoppingListTable" destination="3xg-98-USB" id="oOT-cv-5xy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C81-Ev-Oz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
