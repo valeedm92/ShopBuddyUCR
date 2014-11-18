@@ -145,7 +145,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="6JN-Il-Cpe"/>
+                    <tabBarItem key="tabBarItem" systemItem="featured" id="gTz-0k-wja"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="tableView" destination="QCn-Cy-brl" id="Bce-up-I8r"/>
@@ -527,8 +528,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="ELB-yF-HNM"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="zqF-E5-GeA"/>
                     <navigationItem key="navigationItem" id="cym-Kq-PfP"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C81-Ev-Oz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
