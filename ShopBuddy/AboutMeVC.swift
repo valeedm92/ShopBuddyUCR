@@ -6,14 +6,7 @@
 //  Copyright (c) 2014 Kenneth Hsu. All rights reserved.
 //
 
-// HI DARRIN!!
-
-// HI DARRIN, I reset something...
-
 import UIKit
-
-//hey does this work now
-
 
 class AboutMeVC: UIViewController {
     
