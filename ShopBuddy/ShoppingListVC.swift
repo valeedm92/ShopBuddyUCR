@@ -13,6 +13,7 @@ class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var shoppingListTable: UITableView!
     
     var arrayOfShoppingItems: [String] = [String] ()
+    var queryText: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,17 +42,18 @@ class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected custom cell #: " + String(format: "%i", indexPath.row))
     }
-    
-    
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goto_productsCatalog" {
+            var nextVC: ProductsCatalogVC = segue.destinationViewController as ProductsCatalogVC
+            nextVC.setPrevVC(self)
+        }
     }
-    */
 
 }
