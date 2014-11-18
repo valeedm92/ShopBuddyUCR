@@ -154,7 +154,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6mH-SU-mku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="926.5" y="1448.5"/>
+            <point key="canvasLocation" x="1226.5" y="1448.5"/>
         </scene>
         <!--Search-->
         <scene sceneID="rN1-ke-csK">
@@ -288,12 +288,12 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1978.5" y="1448.5"/>
+            <point key="canvasLocation" x="2278.5" y="1448.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Products CatalogVC-->
         <scene sceneID="XxN-VB-Rg2">
             <objects>
-                <viewController id="8Wp-W5-tYk" sceneMemberID="viewController">
+                <viewController id="8Wp-W5-tYk" customClass="ProductsCatalogVC" customModule="ShopBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hv5-dS-eC6"/>
                         <viewControllerLayoutGuide type="bottom" id="zBp-j0-JSh"/>
@@ -301,13 +301,69 @@
                     <view key="view" contentMode="scaleToFill" id="IDb-Ae-Z2e">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aZO-lu-5ZF">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Products" id="JYf-Sy-OP3">
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="wj8-gF-OWh">
+                                            <connections>
+                                                <action selector="cancelTriggered:" destination="8Wp-W5-tYk" id="3Hw-ze-6Ja"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search products..." translatesAutoresizingMaskIntoConstraints="NO" id="gnh-cl-XCS">
+                                <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="33" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="fOq-xM-XJm">
+                                <rect key="frame" x="0.0" y="108" width="375" height="559"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="catalogItem" rowHeight="33" id="1Br-7e-ZeL" customClass="ProductCell" customModule="ShopBuddy" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Br-7e-ZeL" id="9oi-mf-t98">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJz-s9-L2m">
+                                                    <rect key="frame" x="15" y="3" width="352" height="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="productname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YRr-B5-bgO">
+                                                    <rect key="frame" x="41" y="3" width="326" height="28"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="categoryName" destination="YJz-s9-L2m" id="P8b-eK-cN9"/>
+                                            <outlet property="productName" destination="YRr-B5-bgO" id="EQq-C0-gqH"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="catalogTable" destination="fOq-xM-XJm" id="Pva-GT-fNf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HzS-d3-172" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1475.5" y="2292.5"/>
+            <point key="canvasLocation" x="1775.5" y="2292.5"/>
         </scene>
         <!--Details-->
         <scene sceneID="H4R-mb-6iy">
@@ -461,7 +517,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tIi-mA-vLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1978.5" y="2292.5"/>
+            <point key="canvasLocation" x="2278.5" y="2292.5"/>
         </scene>
         <!--Tab Bar-->
         <scene sceneID="029-N5-8ef">
@@ -484,7 +540,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B2K-it-6sW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1220.5" y="200.5"/>
+            <point key="canvasLocation" x="1775.5" y="200.5"/>
         </scene>
         <!--Account-->
         <scene sceneID="b52-rq-a0A">
@@ -533,12 +589,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="93c-en-CbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-60.5" y="1448.5"/>
+            <point key="canvasLocation" x="-12.5" y="1448.5"/>
         </scene>
         <!--Cart-->
         <scene sceneID="mFb-gO-T8V">
             <objects>
-                <viewController id="cLn-16-qL7" customClass="ShoppingList" customModule="ShopBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cLn-16-qL7" customClass="ShoppingListVC" customModule="ShopBuddy" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Obe-wc-e90"/>
                         <viewControllerLayoutGuide type="bottom" id="D1P-Sd-kGe"/>
@@ -559,8 +615,7 @@
                                     <navigationItem title="Shopping List" id="mUL-BZ-I7O">
                                         <barButtonItem key="rightBarButtonItem" title="+" id="mLv-kZ-RS4">
                                             <connections>
-                                                <action selector="addItemTriggered:" destination="cLn-16-qL7" id="HEA-IF-oph"/>
-                                                <segue destination="8Wp-W5-tYk" kind="presentation" modalTransitionStyle="crossDissolve" id="wyk-Ev-tkn"/>
+                                                <segue destination="8Wp-W5-tYk" kind="show" id="Kbq-n6-emF"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -587,12 +642,12 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="shoppingListTable" destination="3xg-98-USB" id="oOT-cv-5xy"/>
+                        <outlet property="shoppingListTable" destination="3xg-98-USB" id="TXG-ud-ioc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C81-Ev-Oz2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1475.5" y="1448.5"/>
+            <point key="canvasLocation" x="1775.5" y="1448.5"/>
         </scene>
         <!--Sign Up-->
         <scene sceneID="BHj-P0-ar1">
@@ -726,6 +781,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="9To-hP-HfN"/>
-        <segue reference="jid-y8-kTW"/>
+        <segue reference="H9M-sg-MBf"/>
     </inferredMetricsTieBreakers>
 </document>

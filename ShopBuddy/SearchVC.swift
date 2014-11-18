@@ -71,9 +71,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     func setUpBusiness() {
         println("Setup Business")
         
-        var business1 = Business (logo: "100.jpg", catergory: "Gas Station", id: "1", name: "Bob", phoneNum: "###", address: "Addr", price87: "0.00", price89: "0.00", price91: "0.00", priceD: "0.00", timeLastUdpated: "0:00", userLastUpdated: "Joe", distance: "1.2")
-        
-        arrayOfResults.append(business1)
+        arrayOfResults.append(Business (logo: "100.jpg", catergory: "Gas Station", id: "1", name: "Bob", phoneNum: "###", address: "Addr", price87: "0.00", price89: "0.00", price91: "0.00", priceD: "0.00", timeLastUdpated: "0:00", userLastUpdated: "Joe", distance: "1.2"))
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
