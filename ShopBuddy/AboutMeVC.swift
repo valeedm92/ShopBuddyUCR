@@ -12,6 +12,9 @@
 
 import UIKit
 
+//hey does this work now
+
+
 class AboutMeVC: UIViewController {
     
     @IBAction func logoutTriggered(sender: AnyObject) {
