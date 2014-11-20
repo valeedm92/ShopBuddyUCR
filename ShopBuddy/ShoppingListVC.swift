@@ -22,8 +22,6 @@ class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelega
         self.shoppingListTable.delegate = self
         self.shoppingListTable.dataSource = self
         
-
-        arrayOfShoppingItems.append("HELLO")
         shoppingListTable.reloadData()
     }
 
@@ -34,8 +32,10 @@ class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier("shoppingItem") as UITableViewCell
+        let cell: ShoppingCell = tableView.dequeueReusableCellWithIdentifier("shoppingItem") as ShoppingCell
         let currentItem = arrayOfShoppingItems[indexPath.row]
+        cell.setCell (arrayOfShoppingItems[indexPath.row])
+        
         return cell
     }
     
@@ -46,6 +46,21 @@ class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected custom cell #: " + String(format: "%i", indexPath.row))
     }
+    
+    func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
+        
+        return UITableViewCellEditingStyle.Delete;
+    }
+    
+    func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            arrayOfShoppingItems.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+
+    }
+    
 
     // MARK: - Navigation
 
