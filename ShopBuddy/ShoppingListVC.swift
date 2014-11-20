@@ -46,6 +46,21 @@ class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected custom cell #: " + String(format: "%i", indexPath.row))
     }
+    
+    func tableView(tableView: UITableView!, editingStyleForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCellEditingStyle {
+        
+        return UITableViewCellEditingStyle.Delete;
+    }
+    
+    func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+        
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            arrayOfShoppingItems.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+        }
+
+    }
+    
 
     // MARK: - Navigation
 
