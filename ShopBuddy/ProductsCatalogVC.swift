@@ -36,9 +36,6 @@ class ProductsCatalogVC: UIViewController, UITableViewDataSource, UITableViewDel
         let cell: ProductCell = tableView.dequeueReusableCellWithIdentifier("catalogItem") as ProductCell
         let currentProduct = arrayOfProducts[indexPath.row]
         cell.setCell(currentProduct.category, productName: currentProduct.productName, isProduct:currentProduct.isProduct)
-        if !currentProduct.isProduct {
-            cell.backgroundColor = UIColor.grayColor()
-        }
         return cell
     }
     
@@ -53,9 +50,15 @@ class ProductsCatalogVC: UIViewController, UITableViewDataSource, UITableViewDel
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
         println("You selected custom cell #: " + String(format: "%i", indexPath.row))
+        
         if arrayOfProducts[indexPath.row].isProduct {
             previousVC.queryText = arrayOfProducts[indexPath.row].productName
-            println(previousVC.queryText)
+
+            println("queryText: " + previousVC.queryText)
+            previousVC.arrayOfShoppingItems.append(previousVC.queryText)
+            
+            previousVC.viewDidLoad()
+            
             self.dismissViewControllerAnimated(true, completion: nil)
         }
     }

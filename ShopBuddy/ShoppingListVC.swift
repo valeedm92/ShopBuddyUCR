@@ -21,6 +21,10 @@ class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelega
         // Do any additional setup after loading the view.
         self.shoppingListTable.delegate = self
         self.shoppingListTable.dataSource = self
+        
+
+        arrayOfShoppingItems.append("HELLO")
+        shoppingListTable.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -55,5 +59,4 @@ class ShoppingListVC: UIViewController, UITableViewDataSource, UITableViewDelega
             nextVC.setPrevVC(self)
         }
     }
-
 }

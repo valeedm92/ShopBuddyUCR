@@ -36,5 +36,4 @@ class Product {
         self.productName = productName
         self.isProduct = isProduct
     }
-    
 }
