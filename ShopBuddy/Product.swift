@@ -20,6 +20,17 @@ class Product {
         self.isProduct = false
     }
     
+    init (category: String, productName: String) {
+        self.category = category
+        self.productName = productName
+        if (self.productName == "") {
+            isProduct = false
+        }
+        else {
+            isProduct = true
+        }
+    }
+    
     init (category: String, productName: String, isProduct: Bool) {
         self.category = category
         self.productName = productName
