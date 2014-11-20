@@ -8,8 +8,6 @@
 
 import UIKit
 
-// hi im testing a commit
-
 class ProductsCatalogVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet var catalogTable: UITableView!
