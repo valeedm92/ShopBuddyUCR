@@ -22,11 +22,12 @@ class Details: UIViewController {
     var currentBusiness: Business = Business()
     
     @IBAction func updatePrices(sender: AnyObject) {
-        currentBusiness.price87 = regular.text
-        currentBusiness.price89 = midgrade.text
-        currentBusiness.price91 = premium.text
-        currentBusiness.priceD = diesel.text
-        sendPricesToPHP()
+        println("Update prices not working, need to reimplement")
+        // currentBusiness.price87 = regular.text
+        // currentBusiness.price89 = midgrade.text
+        // currentBusiness.price91 = premium.text
+        // currentBusiness.priceD = diesel.text
+        // sendPricesToPHP()
     }
     
     @IBAction func doneTriggered(sender: AnyObject) {
@@ -57,10 +58,10 @@ class Details: UIViewController {
         storeName.text = currentBusiness.name
         address.text = currentBusiness.address
         phoneNum.text = currentBusiness.phoneNum
-        regular.text = currentBusiness.price87
-        midgrade.text = currentBusiness.price89
-        premium.text = currentBusiness.price91
-        diesel.text = currentBusiness.priceD
+        regular.text = "N/A"// currentBusiness.price87
+        midgrade.text = "N/A"// currentBusiness.price89
+        premium.text = "N/A"// currentBusiness.price91
+        diesel.text = "N/A"// currentBusiness.priceD
         image.image = UIImage(named: currentBusiness.logo)
     }
     

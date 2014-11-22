@@ -11,7 +11,12 @@ import Foundation
 class Product {
     
     var category: String
+    // var productID: String
+    // var businessID: String
     var productName: String
+    // var price: String
+    // var timeLastUpdated: String
+    // var userLastUpdated: String
     var isProduct: Bool
     
     init () {

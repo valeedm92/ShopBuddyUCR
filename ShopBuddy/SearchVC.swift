@@ -71,7 +71,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     func setUpBusiness() {
         println("Setup Business")
         
-        arrayOfResults.append(Business (logo: "100.jpg", catergory: "Gas Station", id: "1", name: "Bob", phoneNum: "###", address: "Addr", price87: "0.00", price89: "0.00", price91: "0.00", priceD: "0.00", timeLastUdpated: "0:00", userLastUpdated: "Joe", distance: "1.2"))
+        arrayOfResults.append(Business (logo: "100.jpg", catergory: "Gas Station", id: "1", name: "Bob", phoneNum: "###", address: "Addr", distance: "1.2"))
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -83,7 +83,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         
         let cell: ResultCell = tableView.dequeueReusableCellWithIdentifier("businessCell") as ResultCell
         let currentBusiness = arrayOfResults[indexPath.row]
-        cell.setCell(currentBusiness.logo, price: currentBusiness.price87, time: currentBusiness.timeLastUpdated, user: currentBusiness.userLastUpdated, distance:  currentBusiness.distance)
+        cell.setCell(currentBusiness.logo, price: "0:00", time: "1 minute ago", user: "Darrin", distance:  currentBusiness.distance)
         return cell
     }
     
@@ -163,7 +163,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         var lati: NSString = NSString(format: "%.10f", manager.location.coordinate.latitude)
         var long: NSString = NSString(format: "%.10f", manager.location.coordinate.longitude)
         var post: NSString = NSString(format: "lati=" + lati + "&long=" + long)                 // Post is what we send as input to server
-        var url: NSURL = NSURL(string:"http://shopbuddyucr.com/nearbygas.php")!                 // URL of the PHP
+        var url: NSURL = NSURL(string:"http://shopbuddyucr.com/GetBusiness.php")!                 // URL of the PHP
         var postData: NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength: NSString = String( postData.length )
         var request: NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -192,15 +192,20 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
                 bLogo = updateLogo(bName)
                 var bPhone: String = responseData[i].objectForKey("PhoneNumber") as String
                 var bAddress: String = responseData[i].objectForKey("Address") as String
-                var bPrice87: String = responseData[i].objectForKey("Price87") as String
-                var bPrice89: String = responseData[i].objectForKey("Price89") as String
-                var bPrice91: String = responseData[i].objectForKey("Price91") as String
-                var bPriceD: String = responseData[i].objectForKey("PriceD") as String
-                var bTimeLastUpdated: String = responseData[i].objectForKey("TimeLastUpdated") as String
-                var bUserLastUpdated: String = responseData[i].objectForKey("UserLastUpdated") as String
                 var bDist: String = responseData[i].objectForKey("dist") as String
                 
-                var tmpBusiness = Business(logo: bLogo, catergory: bCat, id: bID, name: bName, phoneNum: bPhone, address: bAddress, price87: bPrice87, price89: bPrice89, price91: bPrice91, priceD: bPriceD, timeLastUdpated: bTimeLastUpdated, userLastUpdated: bUserLastUpdated, distance: bDist)
+                /* THESE ARE NOW PART OF PRODUCTS
+                // var bPrice87: String = responseData[i].objectForKey("Price87") as String
+                // var bPrice89: String = responseData[i].objectForKey("Price89") as String
+                // var bPrice91: String = responseData[i].objectForKey("Price91") as String
+                // var bPriceD: String = responseData[i].objectForKey("PriceD") as String
+                // var bTimeLastUpdated: String = responseData[i].objectForKey("TimeLastUpdated") as String
+                // var bUserLastUpdated: String = responseData[i].objectForKey("UserLastUpdated") as String
+                */
+                
+                // queryPHPForProducts()
+                // tmpBusiness.products = tmpProducts
+                var tmpBusiness = Business(logo: bLogo, catergory: bCat, id: bID, name: bName, phoneNum: bPhone, address: bAddress, distance: bDist)
                 print(i); print(": ")
                 println("appending to arrayOfResults")
                 arrayOfResults.append(tmpBusiness)
@@ -266,14 +271,11 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
        
         if segue.identifier == "goto_Details" {
             println("going to Details")
-            
-//            var currentIndexPath = self.resultsTable.indexPathForCell(sender)
             var i: NSIndexPath = resultsTable.indexPathForSelectedRow()!
             currentBusiness = arrayOfResults[i.row]
             var detailViewReference: Details = segue.destinationViewController as Details
             detailViewReference.setCurrentBusiness(currentBusiness)
             detailViewReference.setPreviousVC(self)
-            // detailViewReference.viewDidLoad()
         }
     }
 
