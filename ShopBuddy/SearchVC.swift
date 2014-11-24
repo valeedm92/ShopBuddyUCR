@@ -119,7 +119,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     
     // Function that updates the location when the search bar text is edited
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        self.getCurrentLocation()
+        // self.getCurrentLocation()
         searchBar.showsCancelButton = false
     }
     // ____________________________________________________________
@@ -145,6 +145,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
                 }
             })
         }
+        /*
         else {
             // This function looks at the address put in the search bar and returns the latti and longi of said location
             CLGeocoder().geocodeAddressString(locationSearchBar.text, {(placemarks: [AnyObject]!, error: NSError!) -> Void in
@@ -155,6 +156,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
                 }   // end of if
             })      // end of function call
         }
+        */
     }
     // ____________________________________________________________
     
@@ -214,6 +216,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
             
             println("parsing business...")
             listOfBusinesses.removeAll(keepCapacity: false)
+            totalListOfProducts.removeAll(keepCapacity: false)
             for var i = 0; i < responseData.count; i++ {
                 var bLogo: String       = "100.jpg"
                 var bCat: String        = "Gas Station" as String
