@@ -60,18 +60,11 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         self.resultsTable.delegate = self
         self.resultsTable.dataSource = self
         resultsTable.reloadData()
-        // self.setUpBusiness()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-
-    func setUpBusiness() {
-        println("Setup Business")
-        
-        arrayOfResults.append(Business (logo: "100.jpg", catergory: "Gas Station", id: "1", name: "Bob", phoneNum: "###", address: "Addr", distance: "1.2"))
     }
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
@@ -79,31 +72,47 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         searchBar.showsCancelButton = false
     }
     
+    
+    
+    //
+    // MARK: - Table View functions
+    // ____________________________________________________________
+    // Function that sets up each cell inside the tableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell: ResultCell = tableView.dequeueReusableCellWithIdentifier("businessCell") as ResultCell
         let currentBusiness = arrayOfResults[indexPath.row]
-        cell.setCell(currentBusiness.logo, price: "0:00", time: "1 minute ago", user: "Darrin", distance:  currentBusiness.distance)
+        cell.setCell(currentBusiness.logo, price: currentBusiness.listOfProducts[0].productPrice, time: currentBusiness.listOfProducts[0].timeLastUpdated, user: currentBusiness.listOfProducts[0].userLastUpdated, distance: currentBusiness.distance)
         return cell
     }
+    // ____________________________________________________________
     
+    // Function that returns the number of rows in the table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfResults.count
     }
+    // ____________________________________________________________
     
+    // Function that is automatically called when a cell is tapped or selected.
+    // This is NOT called if the cell is set to segue to another view
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected custom cell #: " + String(format: "%i", indexPath.row))
         currentBusiness = arrayOfResults[indexPath.row]
     }
+    // ____________________________________________________________
+    // END: - Table View functions
     // =======================================================================================================
+
+
     
-    
+    //
     // MARK: - Location functions
     // ____________________________________________________________
     // Location Manager
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        
+
         if gettingCurrentLocation {
+            // This function gets the user's current location.
             CLGeocoder().reverseGeocodeLocation(manager.location, completionHandler: { (placemarks, error)->Void in
                 if error != nil {
                     println("Reverse geocoder failed with error")
@@ -157,6 +166,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         resultsTable.reloadData()
         self.viewDidLoad()
     }
+    // ____________________________________________________________
     
     func queryLocationFromPHP(manager: CLLocationManager) {
         // Formatting lati and long into NSStrings to send
@@ -203,15 +213,12 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
                 // var bUserLastUpdated: String = responseData[i].objectForKey("UserLastUpdated") as String
                 */
                 
-                // queryPHPForProducts()
-                // tmpBusiness.products = tmpProducts
                 var tmpBusiness = Business(logo: bLogo, catergory: bCat, id: bID, name: bName, phoneNum: bPhone, address: bAddress, distance: bDist)
                 print(i); print(": ")
                 println("appending to arrayOfResults")
                 arrayOfResults.append(tmpBusiness)
             }
         }
-        
     }
     
     func updateLogo (businessName: String) -> String {

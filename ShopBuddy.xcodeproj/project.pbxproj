@@ -139,7 +139,6 @@
 		3EA542A81A1870A200BDFCBC /* ShopBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				3E2CC6151A203E0D00A88253 /* ShoppingCell.swift */,
 				3EA542B11A1870A200BDFCBC /* Main.storyboard */,
 				3EA542B61A1870A200BDFCBC /* LaunchScreen.xib */,
 				3EA542AB1A1870A200BDFCBC /* AppDelegate.swift */,
@@ -154,6 +153,7 @@
 				37F091611A1AF5BD006CC4DF /* ShoppingListVC.swift */,
 				3EE66AB81A1D9AE6007B3106 /* ShortestPathVC.swift */,
 				3EE66ABA1A1D9B4D007B3106 /* ShortestPathCell.swift */,
+				3E2CC6151A203E0D00A88253 /* ShoppingCell.swift */,
 				3734C7F41A1B04F3006EF25D /* ProductsCatalogVC.swift */,
 				3734C7F61A1B0D4C006EF25D /* ProductCell.swift */,
 				3734C7F81A1B0DAC006EF25D /* Product.swift */,
