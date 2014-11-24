@@ -10,7 +10,8 @@ import UIKit
 
 class ResultCell: UITableViewCell {
     
-    @IBOutlet var logo: UIImageView!
+    @IBOutlet var productName: UILabel!
+    @IBOutlet var businessName: UILabel!
     @IBOutlet var price: UILabel!
     @IBOutlet var time: UILabel!
     @IBOutlet var user: UILabel!
@@ -30,13 +31,20 @@ class ResultCell: UITableViewCell {
     
     func setCell (logo: String, price: String, time: String, user: String, distance: String) {
         
-        self.lastUpdatedString.text = "Last Updated by:"
+        self.productName.text = ""
+        self.businessName.text = ""
         self.price.text = "$" + price
         self.time.text = time
         self.user.text = user
         self.distance.text = "~" + distance + " mi."
-        
-        self.logo.image = UIImage(named: logo)
     }
     
+    func setCell (pName: String, bName: String, price: String, time: String, user: String, distance: String) {
+        self.productName.text = pName
+        self.businessName.text = bName
+        self.price.text = "$" + price
+        self.time.text = time
+        self.user.text = user
+        self.distance.text = "~" + distance + " mi."
+    }
 }

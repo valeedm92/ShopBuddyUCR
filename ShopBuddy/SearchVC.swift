@@ -11,22 +11,23 @@ import CoreLocation
 
 class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
     
-    // IBOutlets
-    @IBOutlet var productSearchBar: UISearchBar!
-    @IBOutlet var locationSearchBar: UISearchBar!
-    @IBOutlet var resultsTable: UITableView!
-    
     // Optional variables
     var productSearchBarText: String = "default"
     var locationSearchBarText: String = "default"
     var gettingCurrentLocation: Bool = true
     var data: NSMutableData = NSMutableData()
-    var currentBusiness: Business = Business()
+    var currentProduct: Product = Product()
     var currentIndex: Int = Int()
-    var arrayOfResults: [Business] = [Business] ()
+    var listOfBusinesses: [Business] = [Business]()
+    var totalListOfProducts: [Product] = [Product]()
     
     // Location manager
     let locationManager = CLLocationManager()
+    
+    // IBOutlets & Actions
+    @IBOutlet var productSearchBar: UISearchBar!
+    @IBOutlet var locationSearchBar: UISearchBar!
+    @IBOutlet var resultsTable: UITableView!
     
     @IBAction func getCurrentLocation(sender: UIButton) {
         self.locationManager.delegate = self
@@ -36,14 +37,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         gettingCurrentLocation = true
     }
     
-    func getCurrentLocation() {
-        self.locationManager.delegate = self
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.locationManager.requestWhenInUseAuthorization()
-        self.locationManager.startUpdatingLocation()
-        gettingCurrentLocation = true
-    }
-    
+    // Update function
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,16 +56,11 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         resultsTable.reloadData()
     }
     
+    // Memory warning detector
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        self.getCurrentLocation()
-        searchBar.showsCancelButton = false
-    }
-    
     
     
     //
@@ -79,17 +68,27 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     // ____________________________________________________________
     // Function that sets up each cell inside the tableView
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: ResultCell = tableView.dequeueReusableCellWithIdentifier("searchResultCell") as ResultCell
+        let currentProduct = totalListOfProducts[indexPath.row]
         
-        let cell: ResultCell = tableView.dequeueReusableCellWithIdentifier("businessCell") as ResultCell
-        let currentBusiness = arrayOfResults[indexPath.row]
-        cell.setCell(currentBusiness.logo, price: currentBusiness.listOfProducts[0].productPrice, time: currentBusiness.listOfProducts[0].timeLastUpdated, user: currentBusiness.listOfProducts[0].userLastUpdated, distance: currentBusiness.distance)
+        // Set up variables for the cell
+        var tmpBusiness     = currentProduct.getBusiness(listOfBusinesses)
+        var tmp_pName       = currentProduct.productName
+        var tmp_bName       = tmpBusiness.name
+        var tmp_price       = currentProduct.productPrice
+        var tmp_time        = currentProduct.timeLastUpdated
+        var tmp_user        = currentProduct.userLastUpdated
+        var tmp_distance    = tmpBusiness.distance
+        
+        // Assign the variables for the cell
+        cell.setCell(tmp_pName, bName: tmp_bName, price: tmp_price, time: tmp_time, user: tmp_user, distance: tmp_distance)
         return cell
     }
     // ____________________________________________________________
     
     // Function that returns the number of rows in the table
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return arrayOfResults.count
+        return totalListOfProducts.count
     }
     // ____________________________________________________________
     
@@ -97,7 +96,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     // This is NOT called if the cell is set to segue to another view
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         println("You selected custom cell #: " + String(format: "%i", indexPath.row))
-        currentBusiness = arrayOfResults[indexPath.row]
+        currentProduct = totalListOfProducts[indexPath.row]
     }
     // ____________________________________________________________
     // END: - Table View functions
@@ -108,6 +107,23 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     //
     // MARK: - Location functions
     // ____________________________________________________________
+    // Function that gets the current location of the user
+    func getCurrentLocation() {
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
+        gettingCurrentLocation = true
+    }
+    // ____________________________________________________________
+    
+    // Function that updates the location when the search bar text is edited
+    func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
+        self.getCurrentLocation()
+        searchBar.showsCancelButton = false
+    }
+    // ____________________________________________________________
+    
     // Location Manager
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
 
@@ -163,7 +179,6 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         // Assign location variable
         locationSearchBarText = String(placemark.locality as String + ", " + placemark.postalCode as String)
         queryLocationFromPHP(manager)
-        resultsTable.reloadData()
         self.viewDidLoad()
     }
     // ____________________________________________________________
@@ -172,8 +187,8 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         // Formatting lati and long into NSStrings to send
         var lati: NSString = NSString(format: "%.10f", manager.location.coordinate.latitude)
         var long: NSString = NSString(format: "%.10f", manager.location.coordinate.longitude)
-        var post: NSString = NSString(format: "lati=" + lati + "&long=" + long)                 // Post is what we send as input to server
-        var url: NSURL = NSURL(string:"http://shopbuddyucr.com/GetBusiness.php")!                 // URL of the PHP
+        var post: NSString = NSString(format: "lati=" + lati + "&long=" + long)                     // Post is what we send as input to server
+        var url: NSURL = NSURL(string:"http://shopbuddyucr.com/GetBusiness.php")!                   // URL of the PHP
         var postData: NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength: NSString = String( postData.length )
         var request: NSMutableURLRequest = NSMutableURLRequest(URL: url)
@@ -184,39 +199,40 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         var reponseError: NSError?
         var response: NSURLResponse?
-        
         var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
         
-        
         if (urlData != nil) {
-            //  var responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
-            //  NSLog("Response ==> %@", responseData);
+            
+            /*  Uncomment this code to print responseData to console
+            ----------------------------------------------
+            var responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
+            NSLog("Response ==> %@", responseData);
+            */
+            
             var error:NSError?
             var responseData: NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSArray
-            println("before for loop")
+            
+            println("parsing business...")
+            listOfBusinesses.removeAll(keepCapacity: false)
             for var i = 0; i < responseData.count; i++ {
-                var bLogo: String = "100.jpg"
-                var bCat: String = "Gas Station" as String
-                var bID: String = responseData[i].objectForKey("ID") as String
-                var bName: String = responseData[i].objectForKey("Name") as String
+                var bLogo: String       = "100.jpg"
+                var bCat: String        = "Gas Station" as String
+                var bID: String         = responseData[i].objectForKey("ID") as String
+                var bName: String       = responseData[i].objectForKey("Name") as String
+                var bPhone: String      = responseData[i].objectForKey("PhoneNumber") as String
+                var bAddress: String    = responseData[i].objectForKey("Address") as String
+                var bDist: String       = responseData[i].objectForKey("dist") as String
                 bLogo = updateLogo(bName)
-                var bPhone: String = responseData[i].objectForKey("PhoneNumber") as String
-                var bAddress: String = responseData[i].objectForKey("Address") as String
-                var bDist: String = responseData[i].objectForKey("dist") as String
-                
-                /* THESE ARE NOW PART OF PRODUCTS
-                // var bPrice87: String = responseData[i].objectForKey("Price87") as String
-                // var bPrice89: String = responseData[i].objectForKey("Price89") as String
-                // var bPrice91: String = responseData[i].objectForKey("Price91") as String
-                // var bPriceD: String = responseData[i].objectForKey("PriceD") as String
-                // var bTimeLastUpdated: String = responseData[i].objectForKey("TimeLastUpdated") as String
-                // var bUserLastUpdated: String = responseData[i].objectForKey("UserLastUpdated") as String
-                */
-                
+
                 var tmpBusiness = Business(logo: bLogo, catergory: bCat, id: bID, name: bName, phoneNum: bPhone, address: bAddress, distance: bDist)
+                
+                /* Debug print code */
                 print(i); print(": ")
-                println("appending to arrayOfResults")
-                arrayOfResults.append(tmpBusiness)
+                println("appending to listOfBusinesses")
+                // */
+                
+                listOfBusinesses.append(tmpBusiness)
+                self.storeAllProducts(tmpBusiness.listOfProducts)
             }
         }
     }
@@ -267,7 +283,11 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     }
     // =======================================================================================================
 
-    
+    func storeAllProducts(productsFromBusiness: [Product]) {
+        for var i = 0; i < productsFromBusiness.count; i++ {
+            totalListOfProducts.append(productsFromBusiness[i])
+        }
+    }
     
     // MARK: - Navigation
 
@@ -275,13 +295,13 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-       
         if segue.identifier == "goto_Details" {
             println("going to Details")
             var i: NSIndexPath = resultsTable.indexPathForSelectedRow()!
-            currentBusiness = arrayOfResults[i.row]
+            currentProduct = totalListOfProducts[i.row]
             var detailViewReference: Details = segue.destinationViewController as Details
-            detailViewReference.setCurrentBusiness(currentBusiness)
+            println("You need to fix setCurrentBusiness inside Details.swift")
+            detailViewReference.setCurrentBusiness(Business())
             detailViewReference.setPreviousVC(self)
         }
     }

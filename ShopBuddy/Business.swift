@@ -80,12 +80,12 @@ class Business {
                 var responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
                 NSLog("Response ==> %@", responseData);
             */
-            
-            listOfProducts.removeAll(keepCapacity: false)
+
             var error:NSError?
             var responseData: NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSArray
             
             println("Preparing to parse...")
+            listOfProducts.removeAll(keepCapacity: false)
             for var i = 0; i < responseData.count; i++ {
                 
                 var pID: String = responseData[i].objectForKey("ID") as String

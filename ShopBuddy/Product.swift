@@ -67,4 +67,18 @@ class Product {
         self.userLastUpdated = user
         self.isProduct = isProduct
     }
+    
+    // Goes thru each business and tried to find the business that "self" (aka this product) belongs to.
+    func getBusiness(listOfBusinesses: [Business]) -> Business {
+        for var i = 0; i < listOfBusinesses.count; i++ {
+            if self.businessID == listOfBusinesses[i].id {
+                // Business has been found, return the business
+                println("Business: " + listOfBusinesses[i].name + " found")
+                return listOfBusinesses[i]
+            }
+        }
+        
+        println("Business with matching ID was not found, returning default business...")
+        return Business()
+    }
 }
