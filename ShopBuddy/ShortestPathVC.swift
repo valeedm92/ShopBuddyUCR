@@ -13,6 +13,8 @@ class ShortestPathVC: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var shortestPathTableView: UITableView!
     var listOfBusinesses: [Business] = [Business]()
     var arrayOfResults: [String] = [String]()
+    var wishlist: [Product] = [Product]()
+    
     
     // Update function
     override func viewDidLoad() {
