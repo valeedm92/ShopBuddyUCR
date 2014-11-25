@@ -26,6 +26,8 @@ class Filter: UIViewController, UIPickerViewDelegate {
         
         initsort()
         initDistance()
+        initcc()
+        inittfs()
         
         brands = ["No Filter","Chevron","76", "Mobile", "100", "Arco", "USA Gasoline", "711", "Circle K", "Costco", "Food 4 Less"]
 
@@ -42,9 +44,26 @@ class Filter: UIViewController, UIPickerViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    func initcc() {
+        if(previousVC.ccFilter == "0") {
+            ccSwitch.on = false
+        }
+        else if(previousVC.ccFilter == "1") {
+            ccSwitch.on = true
+        }
+    }
+
+    func inittfs() {
+        if(previousVC.tfsFilter == "0") {
+            tfsSwitch.on = false
+        }
+        else if(previousVC.tfsFilter == "1") {
+            tfsSwitch.on = true
+        }
+    }
     
     func initsort() {
-        if(previousVC.sortBy == "Distance") {
+        if(previousVC.sortBy == "dist") {
             SortSC.selectedSegmentIndex = 1
         }
         else if(previousVC.sortBy == "Price") {
@@ -125,11 +144,11 @@ class Filter: UIViewController, UIPickerViewDelegate {
         if ccSwitch.on {
             
             println("cc ON")
-            ccFilter = 1
+            previousVC.ccFilter = "1"
         }
         else{
             println("cc OFF")
-            ccFilter = 0
+            previousVC.ccFilter = "0"
         }
     }
     
@@ -138,11 +157,11 @@ class Filter: UIViewController, UIPickerViewDelegate {
         if tfsSwitch.on {
             
             println("cc ON")
-            tfsFilter = 1
+            previousVC.tfsFilter = "1"
         }
         else{
             println("cc OFF")
-            tfsFilter = 0
+            previousVC.tfsFilter = "0"
         }
     }
 
@@ -169,7 +188,7 @@ class Filter: UIViewController, UIPickerViewDelegate {
             println("Set at: " + previousVC.sortBy)
         case 1:
             println("Distance segment clicked")
-            previousVC.sortBy = "Distance"
+            previousVC.sortBy = "dist"
             println("Set at: " + previousVC.sortBy)
         default:
             break;

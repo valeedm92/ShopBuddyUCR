@@ -22,6 +22,8 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     var totalListOfProducts: [Product] = [Product]()
     var sortBy = "Price"
     var distance: NSString = "60"
+    var ccFilter = "0"
+    var tfsFilter = "0"
     // Location manager
     let locationManager = CLLocationManager()
     
@@ -191,9 +193,12 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         var lati: NSString = NSString(format: "%.10f", manager.location.coordinate.latitude)
         var long: NSString = NSString(format: "%.10f", manager.location.coordinate.longitude)
         
-        var distancePost: NSString = NSString(format: "&distance"  + distance)
+        var distancePost: NSString = NSString(format: "&distance="  + distance)
         
-        var post: NSString = NSString(format: "lati=" + lati + "&long=" + long + "&sort" + sortBy + distancePost)
+        var ccPost: NSString = NSString(format: "&cc=" + ccFilter)
+        var tfsPost: NSString = NSString(format: "&tfs=" + tfsFilter)
+        
+        var post: NSString = NSString(format: "lati=" + lati + "&long=" + long + "&sort=" + sortBy + distancePost + ccPost + tfsPost)
         
         //var distancePost: NSString = NSString(format: "&distance" + distance)
         
@@ -213,18 +218,20 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         
         if (urlData != nil) {
             
-            /*  Uncomment this code to print responseData to console
-            ----------------------------------------------
+            //  Uncomment this code to print responseData to console
+            //----------------------------------------------
             var responseData:NSString = NSString(data:urlData!, encoding:NSUTF8StringEncoding)!
             NSLog("Response ==> %@", responseData);
-            */
+            
             
             var error:NSError?
-            var responseData: NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSArray
             
-            println("parsing business...")
+            //var responseData: NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSArray
+            
+            //println("parsing business...")
             listOfBusinesses.removeAll(keepCapacity: false)
             totalListOfProducts.removeAll(keepCapacity: false)
+         /*
             for var i = 0; i < responseData.count; i++ {
                 var bLogo: String       = "100.jpg"
                 var bCat: String        = "Gas Station" as String
@@ -240,11 +247,11 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
                 /* Debug print code */
                 print(i); print(": ")
                 println("appending to listOfBusinesses")
-                // */
+                //
                 
                 listOfBusinesses.append(tmpBusiness)
                 self.storeAllProducts(tmpBusiness.listOfProducts)
-            }
+            }*/
         }
     }
     
