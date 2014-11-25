@@ -20,7 +20,8 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     var currentIndex: Int = Int()
     var listOfBusinesses: [Business] = [Business]()
     var totalListOfProducts: [Product] = [Product]()
-    
+    var sortBy = "Price"
+    var distance: NSString = "60"
     // Location manager
     let locationManager = CLLocationManager()
     
@@ -189,7 +190,14 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         // Formatting lati and long into NSStrings to send
         var lati: NSString = NSString(format: "%.10f", manager.location.coordinate.latitude)
         var long: NSString = NSString(format: "%.10f", manager.location.coordinate.longitude)
-        var post: NSString = NSString(format: "lati=" + lati + "&long=" + long)                     // Post is what we send as input to server
+        
+        var distancePost: NSString = NSString(format: "&distance"  + distance)
+        
+        var post: NSString = NSString(format: "lati=" + lati + "&long=" + long + "&sort" + sortBy + distancePost)
+        
+        //var distancePost: NSString = NSString(format: "&distance" + distance)
+        
+        // Post is what we send as input to server
         var url: NSURL = NSURL(string:"http://shopbuddyucr.com/GetBusiness.php")!                   // URL of the PHP
         var postData: NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!
         var postLength: NSString = String( postData.length )
@@ -306,6 +314,10 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
             println("You need to fix setCurrentBusiness inside Details.swift")
             detailViewReference.setCurrentBusiness(Business())
             detailViewReference.setPreviousVC(self)
+        }
+        else if segue.identifier == "goto_Filter" {
+            var FilterVCReference: Filter = segue.destinationViewController as Filter
+            FilterVCReference.previousVC = self
         }
     }
 
