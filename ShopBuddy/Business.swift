@@ -16,17 +16,7 @@ class Business {
     var name: String
     var phoneNum: String
     var address: String
-    var listOfProducts: [Product]
-    var dbURL: NSURL = NSURL(string: "http://shopbuddyucr.com/GetItems.php")!
-    
-    /* THESE ARE NOW A PART OF PRODUCTS
-    var price87: String
-    var price89: String
-    var price91: String
-    var priceD: String
-    var timeLastUpdated: String
-    var userLastUpdated: String
-    */
+    var dbURL: NSURL = NSURL(string: "http://shopbuddyucr.com/GetBusinessbackup.php")!
     
     var distance: String
     
@@ -38,7 +28,6 @@ class Business {
         self.phoneNum = "5555555555"
         self.address = "0 DoesNotExist St., NoCity, NoState"
         self.distance = "0.0"
-        self.listOfProducts = [Product]()
     }
     
     init (logo: String, catergory: String, id: String, name: String, phoneNum: String, address: String, distance: String) {
@@ -49,31 +38,17 @@ class Business {
         self.phoneNum = phoneNum
         self.address = address
         self.distance = distance
-        self.listOfProducts = [Product]()
         // self.queryProductsFromDB()
     }
-    /*
-    func queryProductsFromDB () {
-        var post: NSString = NSString(format: "StoreID=" + self.id)             // Post is what we send as input to server
+    
+    // queries PHP and returns an array of every Business from the database
+    func getListOfBusinesses () ->[Business] {
+        var result: [Business] = [Business]()
         var url: NSURL = dbURL                                                  // URL of the PHP
-        var postData: NSData = post.dataUsingEncoding(NSASCIIStringEncoding)!   // Encode the post
-        var postLength: NSString = String( postData.length )                    // Length of the post
-        
-        // Creation of the request from url
-        var request: NSMutableURLRequest = NSMutableURLRequest(URL: url)
-        request.HTTPMethod = "POST"
-        request.HTTPBody = postData
-        request.setValue(postLength, forHTTPHeaderField: "Content-Length")
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
-        var reponseError: NSError?
-        var response: NSURLResponse?
-        
-        // Send request and store the result inside urlData
-        var urlData: NSData? = NSURLConnection.sendSynchronousRequest(request, returningResponse:&response, error:&reponseError)
+        var data: NSData = NSData(contentsOfURL: url)!
         
         // Check results; if nil that means nothing was retrieved. Otherwise, parse the data
-        if (urlData != nil) {
+        if data.length >= 0 {
             
             /*  Uncomment this code to print responseData to console
             ----------------------------------------------
@@ -82,25 +57,25 @@ class Business {
             */
 
             var error:NSError?
-            var responseData: NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSArray
+            var responseData: NSArray = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSArray
             
             println("Preparing to parse...")
-            listOfProducts.removeAll(keepCapacity: false)
+            result.removeAll(keepCapacity: false)
             for var i = 0; i < responseData.count; i++ {
                 
-                var pID: String = responseData[i].objectForKey("ID") as String
-                var bID: String = self.id
-                var pCategory: String = responseData[i].objectForKey("Category") as String
-                var pName: String = responseData[i].objectForKey("ItemName") as String
-                var pPrice: String = responseData[i].objectForKey("Price") as String
-                var pTime: String = responseData[i].objectForKey("TimeLastUpdated") as String
-                var pUser: String = responseData[i].objectForKey("UserLastUpdated") as String
+                var bID: String = responseData[i].objectForKey("ID") as String
+                var bName: String = responseData[i].objectForKey("Name") as String
+                var bPhone: String = responseData[i].objectForKey("PhoneNumber") as String
+                var bAddress: String = responseData[i].objectForKey("Address") as String
+                var bDist: String = responseData[i].objectForKey("dist") as String
                 
-                var tmpProduct = Product(bID: bID, category: "", productName: pName, price: pPrice, time: pTime, user: pUser, isProduct: true)
+                var tmpBusiness: Business = Business(logo: "", catergory: "", id: bID, name: bName, phoneNum: bPhone, address: bAddress, distance: bDist)
                 print(i); print(": ")
-                println("Appending product: " + pName)
-                listOfProducts.append(tmpProduct)
+                println("Appending Business: " + bName)
+                result.append(tmpBusiness)
             }
         }
-    }*/
+        
+        return result
+    }
 }
