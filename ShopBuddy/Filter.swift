@@ -8,6 +8,8 @@
 
 import UIKit
 
+// Hey kenneth can you see this??
+
 class Filter: UIViewController, UIPickerViewDelegate {
 
     var brands = []
@@ -18,7 +20,7 @@ class Filter: UIViewController, UIPickerViewDelegate {
     var previousVC: SearchVC = SearchVC()
    
     
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
