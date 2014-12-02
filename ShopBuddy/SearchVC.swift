@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate {
+class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
     
     // Optional variables
     var productSearchBarText: String = "default"
@@ -56,6 +56,8 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
             // self.locationManager.startUpdatingLocation()
         }
 
+        self.productSearchBar.delegate = self
+        self.locationSearchBar.delegate = self
         self.resultsTable.delegate = self
         self.resultsTable.dataSource = self
         resultsTable.reloadData()
@@ -68,6 +70,10 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
+    // Dismiss keyboard when user presses "Search"
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
     
     //
     // MARK: - Table View functions
