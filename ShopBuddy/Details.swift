@@ -22,8 +22,8 @@ class Details: UIViewController, UITextFieldDelegate {
     @IBOutlet var productPrice: UITextField!
     @IBOutlet var user: UILabel!
     @IBOutlet var time: UILabel!
-    
-    
+    @IBOutlet var ccFlagLabel: UILabel!
+    @IBOutlet var open24FlagLabel: UILabel!
     
     @IBAction func updatePrices(sender: AnyObject) {
         // detailProduct.productPrice = productPrice.text
@@ -72,7 +72,27 @@ class Details: UIViewController, UITextFieldDelegate {
         businessName.text = detailProduct.businessName
         phoneNum.text = tmpBusiness.phoneNum
         address.text = tmpBusiness.address
-        productPrice.text = "$" + detailProduct.productPrice
+        productPrice.text = detailProduct.productPrice
+        
+        if detailProduct.ccFlag {
+            ccFlagLabel.text = "Yes"
+            ccFlagLabel.textColor = UIColor(red: 0, green: 0.7, blue: 0, alpha: 1)
+            
+        }
+        else {
+            ccFlagLabel.text = "No"
+            ccFlagLabel.textColor = UIColor(red: 0.8, green: 0, blue: 0, alpha: 1)
+        }
+        
+        if detailProduct.open24Flag {
+            open24FlagLabel.text = "Yes"
+            open24FlagLabel.textColor = UIColor(red: 0, green: 0.7, blue: 0, alpha: 1)
+            
+        }
+        else {
+            open24FlagLabel.text = "No"
+            open24FlagLabel.textColor = UIColor(red: 0.8, green: 0, blue: 0, alpha: 1)
+        }
         
     }
     

@@ -30,12 +30,16 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     @IBOutlet var productSearchBar: UISearchBar!
     @IBOutlet var locationSearchBar: UISearchBar!
     @IBOutlet var resultsTable: UITableView!
+    @IBOutlet var busyIndicator: UIActivityIndicatorView!
+    
+    
     
     @IBAction func getCurrentLocation(sender: UIButton) {
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
+        busyIndicator.startAnimating()
     }
     
     // Update function
@@ -185,6 +189,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
         locationSearchBarText = String(placemark.locality as String + ", " + placemark.postalCode as String)
         
         queryLocationFromPHP(manager)
+        busyIndicator.stopAnimating()
         self.viewDidLoad()
     }
     // ____________________________________________________________
