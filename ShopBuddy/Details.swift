@@ -26,7 +26,7 @@ class Details: UIViewController, UITextFieldDelegate {
     @IBOutlet var open24FlagLabel: UILabel!
     
     @IBAction func updatePrices(sender: AnyObject) {
-        // detailProduct.productPrice = productPrice.text
+        detailProduct.productPrice = productPrice.text
         sendPricesToPHP()
     }
     
@@ -40,7 +40,6 @@ class Details: UIViewController, UITextFieldDelegate {
         self.setCurrentProduct()
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        Business().getListOfBusinesses()
         self.productPrice.delegate = self
         
         self.setLabels()

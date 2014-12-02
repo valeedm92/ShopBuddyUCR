@@ -17,12 +17,18 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     var data: NSMutableData = NSMutableData()
     var currentProduct: Product = Product()
     var currentIndex: Int = Int()
-    var listOfBusinesses: [Business] = [Business]()
+    // var listOfBusinesses: [Business] = [Business]()
     var totalListOfProducts: [Product] = [Product]()
     var sortBy = "Price"
     var distance: NSString = "60"
     var ccFilter = "0"
     var tfsFilter = "0"
+    
+    
+    var filteredListOfProducts: [Product] = [Product]()
+    
+    
+    
     // Location manager
     let locationManager = CLLocationManager()
     
@@ -120,7 +126,6 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
     // ____________________________________________________________
     // Function that gets the current location of the user
     func getCurrentLocation() {
-        println("I am updating location")
         self.locationManager.delegate = self
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestWhenInUseAuthorization()
@@ -240,8 +245,7 @@ class SearchVC: UIViewController, CLLocationManagerDelegate, UITableViewDataSour
             
             var responseData: NSArray = NSJSONSerialization.JSONObjectWithData(urlData!, options: NSJSONReadingOptions.MutableContainers, error: &error) as NSArray
             
-            //println("parsing business...")
-            listOfBusinesses.removeAll(keepCapacity: false)
+            println("parsing products...")
             totalListOfProducts.removeAll(keepCapacity: false)
             
             for var i = 0; i < responseData.count; i++ {
