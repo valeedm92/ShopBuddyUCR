@@ -320,7 +320,13 @@
                             <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8cA-L1-8bD">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <items>
-                                    <navigationItem title="Shourtest Route" id="sD6-6R-v52"/>
+                                    <navigationItem title="Best Route" id="sD6-6R-v52">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="RbX-1D-neH">
+                                            <connections>
+                                                <action selector="backButtonTrigger:" destination="Ooz-om-UbP" id="6La-Lk-XwC"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="143" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="8Ub-FR-kqM">
@@ -364,7 +370,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEM-Ax-F8b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1288.5" y="2292.5"/>
+            <point key="canvasLocation" x="1226.5" y="2292.5"/>
         </scene>
         <!--Products CatalogVC-->
         <scene sceneID="XxN-VB-Rg2">
@@ -807,6 +813,11 @@
                                 </textAttributes>
                                 <items>
                                     <navigationItem title="Shopping List" id="mUL-BZ-I7O">
+                                        <barButtonItem key="leftBarButtonItem" title="Best Route" id="MgW-oI-Equ">
+                                            <connections>
+                                                <action selector="BestRouteRequested:" destination="cLn-16-qL7" id="x8e-tm-vca"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="+" id="mLv-kZ-RS4">
                                             <connections>
                                                 <segue destination="8Wp-W5-tYk" kind="show" identifier="goto_productsCatalog" id="Kbq-n6-emF"/>
@@ -839,6 +850,36 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="miK-pi-W1H">
+                                <rect key="frame" x="0.0" y="11" width="375" height="607"/>
+                                <subviews>
+                                    <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wtI-7a-XRN">
+                                        <rect key="frame" x="-1" y="401" width="375" height="44"/>
+                                        <items>
+                                            <navigationItem title="Route Limit" id="7GI-xf-358">
+                                                <barButtonItem key="leftBarButtonItem" title="Cancel" id="xMg-oq-xwv">
+                                                    <color key="tintColor" red="1" green="0.037668995949999999" blue="0.077417771440000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="BestRouteRequestedDismiss:" destination="cLn-16-qL7" id="rud-cO-2fW"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                                <barButtonItem key="rightBarButtonItem" title="Route" id="3XJ-QD-8iI">
+                                                    <connections>
+                                                        <segue destination="Ooz-om-UbP" kind="show" identifier="goto_BestRoute" id="7XU-6p-uHV"/>
+                                                    </connections>
+                                                </barButtonItem>
+                                            </navigationItem>
+                                        </items>
+                                    </navigationBar>
+                                    <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Egh-8a-A4E">
+                                        <rect key="frame" x="0.0" y="445" width="375" height="162"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="cLn-16-qL7" id="ZyP-FA-tuW"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -847,6 +888,7 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="distLimitV" destination="miK-pi-W1H" id="yAa-HR-9BY"/>
                         <outlet property="shoppingListTable" destination="3xg-98-USB" id="TXG-ud-ioc"/>
                     </connections>
                 </viewController>

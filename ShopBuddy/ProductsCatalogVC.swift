@@ -129,6 +129,10 @@ class ProductsCatalogVC: UIViewController, UITableViewDataSource, UITableViewDel
     func loadCatalog () {
         arrayOfProducts.append(Product(category: "Gas", productName: ""))
         arrayOfProducts.append(Product(category: "Gas", productName: "Regular Gas"))
+        arrayOfProducts.append(Product(category: "Gas", productName: "Price87"))
+        arrayOfProducts.append(Product(category: "Gas", productName: "Price89"))
+        arrayOfProducts.append(Product(category: "Gas", productName: "Price91"))
+        arrayOfProducts.append(Product(category: "Gas", productName: "PriceD"))
         arrayOfProducts.append(Product(category: "Gas", productName: "Mid-grade Gas"))
         arrayOfProducts.append(Product(category: "Gas", productName: "Diesel Gas"))
         
