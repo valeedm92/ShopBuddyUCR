@@ -27,6 +27,7 @@ class Details: UIViewController, UITextFieldDelegate {
     
     @IBAction func updatePrices(sender: AnyObject) {
         detailProduct.productPrice = productPrice.text
+        productPrice.resignFirstResponder()
         sendPricesToPHP()
     }
     
