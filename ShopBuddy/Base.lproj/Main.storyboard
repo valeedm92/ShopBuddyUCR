@@ -995,7 +995,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="productName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mzC-h6-UHT">
                                                     <rect key="frame" x="40" y="5" width="359" height="36"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="27"/>
-                                                    <color key="textColor" red="0.11372549019607843" green="0.35686274509803922" blue="0.74509803921568629" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.46274509803921571" green="0.72549019607843135" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -1045,7 +1045,7 @@
                                                     <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="NO." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nnr-lK-Ram">
-                                                    <rect key="frame" x="8" y="3" width="39" height="39"/>
+                                                    <rect key="frame" x="8" y="4" width="49" height="39"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="35"/>
                                                     <color key="textColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1075,7 +1075,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3d1-lo-L0L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1226.5" y="2279.5"/>
+            <point key="canvasLocation" x="1226.5" y="2278.5"/>
         </scene>
         <!--Products CatalogVC-->
         <scene sceneID="zCi-3a-MC9">
@@ -1268,7 +1268,7 @@
         <image name="usericon" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="H9M-sg-MBf"/>
         <segue reference="9To-hP-HfN"/>
-        <segue reference="jid-y8-kTW"/>
     </inferredMetricsTieBreakers>
 </document>
