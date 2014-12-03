@@ -45,7 +45,7 @@ class ShortestPathVC: UIViewController, UITableViewDataSource, UITableViewDelega
             alert.title = "Product(s) not within Range!"
             var text = "These items are not close enough to you: \n"
             for var i = 0; i < outofRange.count; i++ {
-                text = outofRange[i] + "\n"
+                text = text + outofRange[i] + "\n"
             }
             alert.message = text
             alert.delegate = self
@@ -100,7 +100,7 @@ class ShortestPathVC: UIViewController, UITableViewDataSource, UITableViewDelega
                     outofRangeFlag = true
                 }
                 else{
-                    println("Yes results baby")
+                   // println("Yes results baby")
                 }
                 //println("parsing business...")
                 listOfBusinesses.removeAll(keepCapacity: false)
@@ -122,10 +122,14 @@ class ShortestPathVC: UIViewController, UITableViewDataSource, UITableViewDelega
                     //* Debug print code
                     //print(i); print(". ")
 
-                        println("Appending product: " + pName )
-                        println(Distance)
-                        println("Price: " + Price)
+                        //println("Appending product: " + pName )
+                        //println(Distance)
+                        //println("Price: " + Price)
                         // */
+                    
+                    var temp: Product = Product(bID: bName, businessName: bName, category: Address, pID: PhoneNumber, productName: pName, price: Price, time: "nade", user: "nada", dist: Distance, ccFlag: false, open24Flag: false, isProduct: true)
+                    wishlist.append(temp)
+                    
                         dists.append(Distance.doubleValue)
 
                   //  totalListOfProducts.append(tmpProduct)
@@ -150,12 +154,24 @@ class ShortestPathVC: UIViewController, UITableViewDataSource, UITableViewDelega
     // Set up each ShortestPathCell here
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell: ShortestPathCell = tableView.dequeueReusableCellWithIdentifier("shortestPathCell") as ShortestPathCell
-        cell.setCell("BestBuy", productName: "iPad", isProduct: false)
+        var businessName = wishlist[indexPath.row].businessName
+        var businessAddress = wishlist[indexPath.row].category
+        var businessPhoneNumber = wishlist[indexPath.row].productID
+        println(businessName)
+        var distance = wishlist[indexPath.row].distance
+        let myrange = Range(start:advance(distance.startIndex,1), end: advance(distance.startIndex,5))
+
+        distance = distance.substringWithRange(myrange)
+        var productName = wishlist[indexPath.row].productName
+        var price = wishlist[indexPath.row].productPrice
+        
+        cell.setCell(businessName, productName: productName, isProduct: true, productDistance: distance, businessPhoneNumber: businessPhoneNumber, businessAddress: businessAddress, pprice: price, number: indexPath.row+1)
+        
         return cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return previousVC.arrayOfShoppingItems.count;
+        return wishlist.count;
     }
 
     func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
